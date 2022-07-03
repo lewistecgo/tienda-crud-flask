@@ -10,4 +10,3 @@ def main_page():  # put application's code here
 
 if __name__ == '__main__':
     app.run()
-

@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('.static', filename='css/bootstrap.css') }}">
 </head>
 <body>
-{% block content %}{% endblock %}
+<div class="container-fluid">
+    {% block content %}{% endblock %}
+</div>
+<script src="{{ url_for('.static', filename='js/bootstrap.js') }}"></script>
 </body>
 </html>
