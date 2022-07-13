@@ -12,3 +12,8 @@ class Products(db.Model):
 
     def __repr__(self):
         return f"Products('{self.product_name}', '{self.product_description}', '{self.product_price}', '{self.product_quantity}', '{self.product_tag}') "
+
+    @staticmethod
+    def get_by_id(id):
+        return Products.query.get(id)
+

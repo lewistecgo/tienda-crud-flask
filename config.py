@@ -12,7 +12,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "mariadb+mariadbconnector://root:admin@127.0.0.1:3306/tiendadb"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:admin@127.0.0.1:3306/tiendadb"
 
 
 config = {
