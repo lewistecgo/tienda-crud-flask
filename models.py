@@ -17,3 +17,6 @@ class Products(db.Model):
     def get_by_id(id):
         return Products.query.get(id)
 
+    def print_products(self):
+        print(f'Nombre del producto ${self.product_name} - descripción ${self.product_description} - cantidad ${self.product_quantity} - precio ${self.product_price} - etiqueta ${self.product_tag}')
+
