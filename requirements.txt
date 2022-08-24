@@ -1,3 +1,4 @@
-Flask
-sqlalchemy
-wtforms
+Flask==2.2.2
+sqlalchemy==1.4.40
+wtforms==3.0.1
+Flask-SQLAlchemy
