@@ -22,9 +22,9 @@
             </tr>
             </thead>
             <tbody class="table-group-divider">
-            {% for prod in list_prod %}
+            {% for prod, count in pair_prod %}
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{ count + 1 }}</th>
                 <td>{{ prod.product_name }}</td>
                 <td>{{ prod.product_description }}</td>
                 <td>{{ prod.product_quantity }}</td>
@@ -34,7 +34,6 @@
                 <td><button type="button" class="btn btn-danger">Eliminar</button></td>
             </tr>
             {% endfor %}
-
             </tbody>
         </table>
     </div>

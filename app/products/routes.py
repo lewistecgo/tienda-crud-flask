@@ -11,8 +11,11 @@ def list_products():
     productos = Products.get_by_id(1)
     print(productos)
     list_prod = Products.query.all()
+    size_prod = range(0, len(list_prod))
+    print(size_prod)
+    pair_prod = zip(list_prod, size_prod)
 
-    return render_template('products/list_products.html', list_prod=list_prod)
+    return render_template('products/list_products.html', pair_prod=pair_prod)
 
 
 @products.route('/add_products', methods=['POST', 'GET'])
