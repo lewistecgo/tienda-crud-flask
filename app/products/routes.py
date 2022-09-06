@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 
 from app import db
 from app.products import products
@@ -59,12 +59,28 @@ def update_product(id):
     # product = Products.query.filter_by(product_id=id).first()
     product = Products.query.get(id)
     print("UPDATE PROD: ", product)
+
     product_form = EditProductForm(obj=product)
     product_form.populate_obj(product)
+
     if product_form.validate_on_submit():
-        db.session.add(product)
+        product.product_name = product_form.name.data
+        product.product_description = product_form.description.data
+        product.product_quantity = product_form.quantity.data
+        product.product_price = product_form.price.data
+        product.product_tag = product_form.tag.data
+
+        print(f'name: {product.product_name} - descr: {product.product_description} - q: {product.product_quantity} - '
+              f'price: {product.product_price} - tag: {product.product_tag}')
+        #
+        # product = Products(product_name=name, product_description=description, product_quantity=quantity,
+        #                    product_price=price, product_tag=tag)
+
+
+        # db.session.add(product)
         db.session.commit()
+
+        flash("Changes saved")
         return redirect(url_for('products.list_products'))
 
     return render_template('products/edit_products.html', title="Editar producto", form=product_form)
-
