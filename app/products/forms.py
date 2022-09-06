@@ -11,3 +11,13 @@ class AddProductForm(FlaskForm):
     tag = StringField('Etiqueta', validators=[DataRequired()])
 
     submit = SubmitField("Agregar producto")
+
+
+class EditProductForm(FlaskForm):
+    name = StringField('Nombre', validators=[DataRequired(), Length(max=64)])
+    description = StringField('Descripción', validators=[DataRequired(), Length(max=64)])
+    quantity = IntegerField('Cantidad', validators=[DataRequired()])
+    price = FloatField('Precio', validators=[DataRequired()])
+    tag = StringField('Etiqueta', validators=[DataRequired()])
+
+    submit = SubmitField("Editar producto")

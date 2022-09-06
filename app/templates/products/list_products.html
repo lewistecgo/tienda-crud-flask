@@ -42,7 +42,7 @@
                 <td>{{ prod.product_quantity }}</td>
                 <td>{{ prod.product_price }}</td>
                 <td>{{ prod.product_tag }}</td>
-                <td><button type="button" class="btn btn-warning">Editar</button></td>
+                <td><a class="btn btn-warning" href="/update/{{ prod.product_id }}">Editar</a></td>
                 <td><a class="btn btn-danger" href="/delete/{{ prod.product_id }}">Eliminar</a></td>
 
             </tr>

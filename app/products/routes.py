@@ -1,8 +1,8 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, url_for
 
 from app import db
 from app.products import products
-from app.products.forms import AddProductForm
+from app.products.forms import AddProductForm, EditProductForm
 from models import Products
 
 
@@ -52,3 +52,19 @@ def delete_product(id):
     #         db.session.commit()
     #         return redirect('/products/list_products.html')
     # return render_template('products/list_products.html')
+
+
+@products.route('/update/<int:id>', methods=['GET', 'POST'])
+def update_product(id):
+    # product = Products.query.filter_by(product_id=id).first()
+    product = Products.query.get(id)
+    print("UPDATE PROD: ", product)
+    product_form = EditProductForm(obj=product)
+    product_form.populate_obj(product)
+    if product_form.validate_on_submit():
+        db.session.add(product)
+        db.session.commit()
+        return redirect(url_for('products.list_products'))
+
+    return render_template('products/edit_products.html', title="Editar producto", form=product_form)
+
