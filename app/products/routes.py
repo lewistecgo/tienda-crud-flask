@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request, redirect
 
 from app import db
 from app.products import products
@@ -34,3 +34,21 @@ def add_products():
         db.session.commit()
 
     return render_template('products/add_products.html', title="Agregar producto", form=products_form)
+
+
+@products.route('/delete/<int:id>', methods=['GET', 'POST'])
+def delete_product(id):
+    product = Products.query.filter_by(product_id=id).first()
+    db.session.delete(product)
+    db.session.commit()
+    return redirect('/products')
+
+    # prod = db.session.query(Products).filter(Products.product_id==id).first()
+    # print("PROD 2: ", prod)
+    # print("PRODUCTO: ", product)
+    # if request.method == 'POST':
+    #     if product:
+    #         db.session.delete(product)
+    #         db.session.commit()
+    #         return redirect('/products/list_products.html')
+    # return render_template('products/list_products.html')
