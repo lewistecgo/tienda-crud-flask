@@ -2,9 +2,11 @@
 {% include "navbar.html" %}
 
 {% block content %}
-    <div class="container-fluid align-content-center">
-        <a href="{{ url_for("products.add_products") }}" class="btn btn-primary btn-lg btn-block">Agregar Productos</a>
-        <a href="{{ url_for("products.list_products") }}" class="btn btn-primary btn-lg btn-block">Ver Productos</a>
+    <div class="root">
+        <div class="container-fluid align-content-center">
+            <a href="{{ url_for("products.add_products") }}" class="btn btn-primary btn-lg btn-block">Agregar Productos</a>
+            <a href="{{ url_for("products.list_products") }}" class="btn btn-primary btn-lg btn-block">Ver Productos</a>
+        </div>
     </div>
 {% endblock %}
 
