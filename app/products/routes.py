@@ -6,7 +6,7 @@ from app.products.forms import AddProductForm, EditProductForm
 from models import Products
 
 
-@products.route('/products')
+@products.route('/products', methods = ['GET', 'POST'])
 def list_products():
     productos = Products.get_by_id(1)
     print(productos)
